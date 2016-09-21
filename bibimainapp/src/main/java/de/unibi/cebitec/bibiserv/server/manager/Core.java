@@ -22,8 +22,7 @@
  */
 package de.unibi.cebitec.bibiserv.server.manager;
 
-
-import com.sun.jersey.spi.container.servlet.ServletContainer;
+import org.glassfish.jersey.servlet.ServletContainer;
 import de.unibi.cebitec.bibiserv.server.manager.context.BiBiWebApplicationContext;
 import de.unibi.cebitec.bibiserv.server.manager.utilities.AdminModClassLoader;
 import de.unibi.cebitec.bibiserv.server.manager.utilities.AdminModClassLoaderImpl;

@@ -138,11 +138,13 @@
             <param-value>de.unibi.cebitec.bibiserv.web.rest.BiBiServApplication</param-value>
         </init-param>
         <init-param>
-            <param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>
-            <param-value>true</param-value>
+            <param-name>jersey.config.server.provider.packages</param-name>
+            <param-value>jersey-media-json-jackson</param-value>
+            <!--<param-name>com.sun.jersey.api.json.POJOMappingFeature</param-name>-->
+            <!--<param-value>true</param-value>-->
         </init-param>
         <init-param>
-            <param-name>com.sun.jersey.spi.container.ContainerResponseFilters</param-name>
+            <param-name>javax.ws.rs.container.ContainerResponseFilter</param-name>
             <param-value>de.unibi.cebitec.bibiserv.web.rest.CORSFilter</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>

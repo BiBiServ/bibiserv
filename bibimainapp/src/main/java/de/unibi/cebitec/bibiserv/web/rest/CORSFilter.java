@@ -22,14 +22,15 @@
  */
 package de.unibi.cebitec.bibiserv.web.rest;
 
-import com.sun.jersey.spi.container.ContainerRequest;
-import com.sun.jersey.spi.container.ContainerResponse;
-import com.sun.jersey.spi.container.ContainerResponseFilter;
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.ContainerResponseFilter;
 import javax.ws.rs.core.MultivaluedMap;
+import java.io.IOException;
 
 /**
  * Extends default JAXRS ContainerResponseFilter to support CORS header.
- * 
+ *
  * see https://en.wikipedia.org/wiki/Cross-origin_resource_sharing for an short introduction.
  *
  *
@@ -38,14 +39,12 @@ import javax.ws.rs.core.MultivaluedMap;
 public class CORSFilter implements ContainerResponseFilter {
 
     @Override
-    public ContainerResponse filter(ContainerRequest req, ContainerResponse res) {
-        MultivaluedMap<String, Object> headermap = res.getHttpHeaders();
+    public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
+        MultivaluedMap<String, String> headermap = containerRequestContext.getHeaders();
         headermap.add("Access-Control-Allow-Origin", "*");
         headermap.add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
         headermap.add("Access-Control-Allow-Credentials", "true");
         headermap.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD");
         headermap.add("Access-Control-Max-Age", "1209600");
-        return res;
     }
-
 }
